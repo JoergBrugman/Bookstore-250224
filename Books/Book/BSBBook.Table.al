@@ -1,5 +1,7 @@
+/// <summary>
+/// Book Master Table
+/// </summary>
 namespace GuATraining.Books.Book;
-
 
 table 50100 "BSB Book"
 {

@@ -147,6 +147,21 @@ page 50101 "BSB Book List"
                     BSBBookTypeProcess.DeliverBook();
                 end;
             }
+            action(WithInterfaceAndEnum)
+            {
+                Caption = 'Process with Interface and Enum';
+                Image = Process;
+                ToolTip = 'Process with Interface and Enum';
+
+                trigger OnAction()
+                var
+                    BSBBookTypeProcess: Interface "BSB Book Type Process";
+                begin
+                    BSBBookTypeProcess := Rec.Type;
+                    BSBBookTypeProcess.DeployBook();
+                    BSBBookTypeProcess.DeliverBook();
+                end;
+            }
         }
     }
 

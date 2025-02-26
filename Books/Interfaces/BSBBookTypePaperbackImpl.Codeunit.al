@@ -1,6 +1,6 @@
 namespace GuATraining.Books.Interfaces;
 
-codeunit 50112 "BSB Book Type Paperback Impl."
+codeunit 50112 "BSB Book Type Paperback Impl." implements "BSB Book Type Process"
 {
     procedure DeployBook()
     begin

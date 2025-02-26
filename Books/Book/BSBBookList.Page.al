@@ -96,6 +96,9 @@ page 50101 "BSB Book List"
                 begin
 
                     OnBeforeStartBookProcess(Rec, IsHandled); // Keine Verpflichtung, NUR ein Angebot!!!!
+                    if not IsHandled then
+                        exit;
+
                     case Rec.Type of
                         "BSB Book Type"::" ":
                             begin
@@ -115,6 +118,35 @@ page 50101 "BSB Book List"
                     end;
                 end;
             }
+            action(WithInterface)
+            {
+                Caption = 'Process with Interface';
+                Image = Process;
+                ToolTip = 'Process with Interface';
+
+                trigger OnAction()
+                var
+                    BSBBookTypeNoneImpl: Codeunit "BSB Book Type None Impl.";
+                    BSBBookTypeHardcoverImpl: Codeunit "BSB Book Type Hardcover Impl.";
+                    BSBBookTypePaperbackImpl: Codeunit "BSB Book Type Paperback Impl.";
+                    BSBBookTypeProcess: Interface "BSB Book Type Process";
+                    IsHandled: Boolean;
+                begin
+
+                    OnBeforeStartBookProcessWithInterface(Rec, BSBBookTypeProcess, IsHandled); // Keine Verpflichtung, NUR ein Angebot!!!!
+                    if not IsHandled then
+                        case Rec.Type of
+                            "BSB Book Type"::" ":
+                                BSBBookTypeProcess := BSBBookTypeNoneImpl;
+                            "BSB Book Type"::Hardcover:
+                                BSBBookTypeProcess := BSBBookTypeHardcoverImpl;
+                            "BSB Book Type"::Paperback:
+                                BSBBookTypeProcess := BSBBookTypePaperbackImpl;
+                        end;
+                    BSBBookTypeProcess.DeployBook();
+                    BSBBookTypeProcess.DeliverBook();
+                end;
+            }
         }
     }
 
@@ -125,6 +157,11 @@ page 50101 "BSB Book List"
 
     [IntegrationEvent(false, false)]
     local procedure OnBeforeStartBookProcess(Rec: Record "BSB Book"; var IsHandled: Boolean)
+    begin
+    end;
+
+    [IntegrationEvent(false, false)]
+    local procedure OnBeforeStartBookProcessWithInterface(Rec: Record "BSB Book"; var BSBBookTypeProcess: Interface GuATraining.Books.Interfaces."BSB Book Type Process"; var IsHandled: Boolean)
     begin
     end;
 }

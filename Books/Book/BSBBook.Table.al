@@ -93,7 +93,13 @@ table 50100 "BSB Book"
     }
 
     trigger OnDelete()
+    var
+        IsHandled: Boolean;
     begin
+        OnBeforeOnDelete(Rec, xRec, IsHandled);
+        if IsHandled then
+            exit;
+
         Error(OnDeleteBookErr);
     end;
     //[x] Ein Buch darf nicht gelöscht
@@ -164,6 +170,11 @@ table 50100 "BSB Book"
     local procedure TestBlocked(BSBBook: Record "BSB Book")
     begin
         BSBBook.TestField(Blocked, false);
+    end;
+
+    [IntegrationEvent(false, false)]
+    local procedure OnBeforeOnDelete(var Rec: Record "BSB Book"; var xRec: Record "BSB Book"; var IsHandled: Boolean)
+    begin
     end;
 
 }

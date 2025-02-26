@@ -1,6 +1,7 @@
 namespace GuATraining.Books.Book;
 
 using GuATraining.Books.Tool;
+using Microsoft.Sales.Customer;
 
 page 50101 "BSB Book List"
 {
@@ -59,6 +60,23 @@ page 50101 "BSB Book List"
                 ToolTip = 'Create 100 Books for Testing';
                 RunObject = codeunit "BSB Create Books";
             }
+
+            action(ProcWithComplexReturnValue)
+            {
+                Caption = 'Demo Proc. w. Cpml. Return';
+                Image = Process;
+                ToolTip = 'Demo Proc. w. Cpml. Return';
+
+                trigger OnAction()
+                begin
+                    Message('%1', GetCustomer('10000'));
+                end;
+            }
         }
     }
+
+    procedure GetCustomer(No: Code[20]) Customer: Record Customer
+    begin
+        Customer.Get(No);
+    end;
 }

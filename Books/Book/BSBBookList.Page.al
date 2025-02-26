@@ -1,6 +1,7 @@
 namespace GuATraining.Books.Book;
 
 using GuATraining.Books.Tool;
+using GuATraining.Books.Interfaces;
 using Microsoft.Sales.Customer;
 
 page 50101 "BSB Book List"
@@ -19,7 +20,6 @@ page 50101 "BSB Book List"
         {
             repeater(Books)
             {
-
                 field("No."; Rec."No.")
                 {
                     ToolTip = 'Specifies the value of the No. field.', Comment = '%';
@@ -27,6 +27,10 @@ page 50101 "BSB Book List"
                 field(Description; Rec.Description)
                 {
                     ToolTip = 'Specifies the value of the Description field.', Comment = '%';
+                }
+                field(Type; Rec.Type)
+                {
+                    ToolTip = 'Specifies the value of the Type field.', Comment = '%';
                 }
                 field(ISBN; Rec.ISBN)
                 {
@@ -51,6 +55,10 @@ page 50101 "BSB Book List"
     }
     actions
     {
+        area(Promoted)
+        {
+            actionref(WithProcedure_Promoted; WithProcedure) { }
+        }
         area(Processing)
         {
             action(CreateBooks)
@@ -72,11 +80,51 @@ page 50101 "BSB Book List"
                     Message('%1', GetCustomer('10000'));
                 end;
             }
+
+            action(WithProcedure)
+            {
+                Caption = 'Process with Procedure';
+                Image = Process;
+                ToolTip = 'Process with Procedure';
+
+                trigger OnAction()
+                var
+                    BSBBookTypeNoneImpl: Codeunit "BSB Book Type None Impl.";
+                    BSBBookTypeHardcoverImpl: Codeunit "BSB Book Type Hardcover Impl.";
+                    BSBBookTypePaperbackImpl: Codeunit "BSB Book Type Paperback Impl.";
+                    IsHandled: Boolean;
+                begin
+
+                    OnBeforeStartBookProcess(Rec, IsHandled); // Keine Verpflichtung, NUR ein Angebot!!!!
+                    case Rec.Type of
+                        "BSB Book Type"::" ":
+                            begin
+                                BSBBookTypeNoneImpl.DeployBook();
+                                BSBBookTypeNoneImpl.DeliverBook();
+                            end;
+                        "BSB Book Type"::Hardcover:
+                            begin
+                                BSBBookTypeHardcoverImpl.DeployBook();
+                                BSBBookTypeHardcoverImpl.DeliverBook();
+                            end;
+                        "BSB Book Type"::Paperback:
+                            begin
+                                BSBBookTypePaperbackImpl.DeployBook();
+                                BSBBookTypePaperbackImpl.DeliverBook();
+                            end;
+                    end;
+                end;
+            }
         }
     }
 
     procedure GetCustomer(No: Code[20]) Customer: Record Customer
     begin
         Customer.Get(No);
+    end;
+
+    [IntegrationEvent(false, false)]
+    local procedure OnBeforeStartBookProcess(Rec: Record "BSB Book"; var IsHandled: Boolean)
+    begin
     end;
 }

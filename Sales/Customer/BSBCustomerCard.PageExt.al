@@ -3,6 +3,7 @@ namespace GuATraining.Sales.Customer;
 using Microsoft.Sales.Customer;
 using GuATraining.Books.Book;
 using Microsoft.Inventory.Item;
+using GuATraining.Sales.Customer.BingMapsControl;
 
 pageextension 50100 "BSB Customer Card" extends "Customer Card"
 {
@@ -33,6 +34,12 @@ pageextension 50100 "BSB Customer Card" extends "Customer Card"
             {
                 ApplicationArea = All;
                 SubPageLink = "No." = field("BSB Favorite Book No.");
+            }
+
+            part(BSBBingMapsCardPart; "BSB BingMapsCardPart")
+            {
+                ApplicationArea = All;
+                SubPageLink = "No." = field("No.");
             }
         }
     }

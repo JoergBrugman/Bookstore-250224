@@ -381,6 +381,30 @@
           <note from="Developer" annotates="general" priority="2"/>
           <note from="Xliff Generator" annotates="general" priority="3">Profile BSB Bookstore Profile - Property Caption</note>
         </trans-unit>
+        <trans-unit id="Page 1869352431 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Map</source>
+          <target state="needs-translation"/>
+          <note from="Developer" annotates="general" priority="2"/>
+          <note from="Xliff Generator" annotates="general" priority="3">Page BSB BingMapsCardPart - Property Caption</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1433710053 - NamedType 3122806691" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Balance of Customer is lager than Credit Linit</source>
+          <target state="translated">Der Saldo des Debitors überschreitet sein Kreditlimit</target>
+          <note from="Developer" annotates="general" priority="2">de-DE=Der Saldo des Debitors überschreitet sein Kreditlimit</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit BSB Cust. Cred. Limit Notif. - NamedType CredLimitNotifDescriptionTxt</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1433710053 - NamedType 2656007186" size-unit="char" translate="yes" xml:space="preserve">
+          <source>%1 %2 of %3 %4 %5 is larger than %6</source>
+          <target state="translated">%1 %2 of %3 %4 %5 istgrößer als %6</target>
+          <note from="Developer" annotates="general" priority="2">de-DE=%1 %2 of %3 %4 %5 istgrößer als %6</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit BSB Cust. Cred. Limit Notif. - NamedType CredLimitNotifMsg</note>
+        </trans-unit>
+        <trans-unit id="Codeunit 1433710053 - NamedType 1846691345" size-unit="char" translate="yes" xml:space="preserve">
+          <source>Customer Balance exceeds Credit Limit.</source>
+          <target state="translated">Der Saldo ist größer als das Kreditlimit.</target>
+          <note from="Developer" annotates="general" priority="2">de-DE=Der Saldo ist größer als das Kreditlimit.</note>
+          <note from="Xliff Generator" annotates="general" priority="3">Codeunit BSB Cust. Cred. Limit Notif. - NamedType CredLimitNotifTxt</note>
+        </trans-unit>
         <trans-unit id="PageExtension 3166640549 - Control 690755111 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 523354100">
           <source>Bookstore</source>
           <target state="needs-translation"/>

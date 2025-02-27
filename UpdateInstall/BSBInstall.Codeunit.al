@@ -1,3 +1,5 @@
+namespace GuATraining.UpdateInstall;
+
 codeunit 50133 "BSB Install"
 {
     Subtype = Install;

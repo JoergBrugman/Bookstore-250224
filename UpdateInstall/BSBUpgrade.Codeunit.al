@@ -1,3 +1,5 @@
+namespace GuATraining.UpdateInstall;
+
 codeunit 50134 "BSB Upgrade"
 {
     Subtype = Upgrade;

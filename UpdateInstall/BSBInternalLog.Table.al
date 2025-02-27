@@ -1,4 +1,5 @@
 namespace GuATraining.UpdateInstall;
+
 table 50101 "BSB Internal Log"
 {
     Caption = 'Internal Log';

@@ -318,6 +318,16 @@
           <note from="Developer" annotates="general" priority="2"></note>
           <note from="Xliff Generator" annotates="general" priority="3">Profile BSB Bookstore Profile - Property Caption</note>
         </trans-unit>
+        <trans-unit id="PageExtension 975782294 - Action 2958925496 - Property 1295455071" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4081634891">
+          <source>Executes the Get Exchange Rate action</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension BSB Currencies - Action BSB Get Exchange Rate - Property ToolTip</note>
+        </trans-unit>
+        <trans-unit id="PageExtension 975782294 - Action 2958925496 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve" al-object-target="Page 4081634891">
+          <source>Get Exchange Rate</source>
+          <note from="Developer" annotates="general" priority="2"></note>
+          <note from="Xliff Generator" annotates="general" priority="3">PageExtension BSB Currencies - Action BSB Get Exchange Rate - Property Caption</note>
+        </trans-unit>
         <trans-unit id="Page 1869352431 - Property 2879900210" size-unit="char" translate="yes" xml:space="preserve">
           <source>Map</source>
           <note from="Developer" annotates="general" priority="2"></note>
